@@ -1,37 +1,46 @@
 import './skeleton.css';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import audio from '../../assets/sounds/audio.mp3';
 import buttonDance from '../../assets/sounds/buttonDance.mp3';
 
 const Skeleton = () => {
-  const [skeleton, setSkeleton] = useState('off');
-  const [setAudioPlaying] = useState(null);
+  const [skeleton, setSkeleton] = useState('off'); // Controla si el muñeco está bailando
+  const audioRef = useRef(new Audio(audio)); // Mantén una referencia a la instancia de audio
+
+  useEffect(() => {
+    // Escuchar el evento 'ended' cuando el audio finaliza
+    const handleAudioEnded = () => {
+      setSkeleton('off'); // Detén la animación cuando termine la canción
+    };
+
+    const currentAudio = audioRef.current;
+    currentAudio.addEventListener('ended', handleAudioEnded); // Asigna el evento
+
+    // Cleanup del evento al desmontar el componente
+    return () => {
+      currentAudio.removeEventListener('ended', handleAudioEnded);
+    };
+  }, []);
 
   const handleClick = () => {
     const buttonSound = new Audio(buttonDance);
-    const audioTrack = new Audio(audio);
-
+    
     if (skeleton === 'off') {
       setSkeleton('on');
       buttonSound.play();
-      audioTrack.play();
-      setAudioPlaying(audioTrack);
+      audioRef.current.play();
     } else {
       setSkeleton('off');
-      audioTrack.pause();
-      setAudioPlaying(null);
+      audioRef.current.pause();
     }
   };
 
   return (
-    <div className='dance'>
-      <div
-        className={`skeletonOff ${skeleton}`}
-        id='static'
-        onClick={handleClick}>
-        Dance
-      </div>
+    <div>
+      <div className={`skeletonOff ${skeleton}`} id='static'></div>
+      <button onClick={handleClick} className='dance'>Dance</button>
     </div>
   );
 };
+
 export default Skeleton;

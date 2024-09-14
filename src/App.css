@@ -5,3 +5,43 @@
   top: 0;
   bottom: 0;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  margin: 1rem;
+}
+
+.list {
+  display: flex;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.button-list {
+  display: flex;
+  border-radius: 35px;
+  border: 2px solid #9e9ec9;
+  padding: 10px 40px;
+  margin: 10px 10px;
+  color: black;
+  transition: background-image 0.3s ease;
+  cursor: pointer;
+}
+
+.button-list:hover {
+  background-image: linear-gradient(to right, #dbcef2, #daebf3);
+}
+
+.button-list.active {
+  background-image: linear-gradient(to right, #c5b3eb, #a7d8e9);
+}

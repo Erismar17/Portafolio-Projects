@@ -1,32 +1,30 @@
-.esqueletoOff {
+.dance {
+    background-color: #ff5e00;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid #b84300;
+    width: 550px;
+    font-size: x-large;
+}
+
+.dance.hover {
+    background-color: #f0894e;
+}
+
+.skeletonOff {
     width: 550px;
     height: 600px;
-    background-color: #ff5e00;
     display: flex;
+    margin: 20px 0;
     align-items: end;
+    border-radius: 10px;
     justify-content: center;
+    border: 2px solid #b84300;
+    background-color: #ff5e00;
     background-image: url('../../assets/img/skeletonImg.png');
 }
 
-.esqueletoOff.on {
+.skeletonOff.on {
     background-image: url('../../assets/img/skeleton.gif');
-}
-
-.esqueletoOnOff {
-    width: 100px;
-    height: 50px;
-    background-color: #7e4300c7;
-    border-radius: 1vh;
-    border: .2rem solid #742a00d2;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: aliceblue;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
-.esqueletoOnOff:hover {
-    background-color: #f0894e;
 }
