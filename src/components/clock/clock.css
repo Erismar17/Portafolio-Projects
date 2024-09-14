@@ -1,0 +1,93 @@
+.reloj-digital {
+    border: 2px solid #54daf1;
+    width: 100px; /* largo */
+    height: 50px; /* ancho */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -15vh;
+    border-radius: 50vh;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: .8rem;
+    color: #327885;
+    z-index: 10001;
+    background-color: rgb(26, 34, 32);
+}
+
+.reloj {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/img/clock.png');
+    background-size: cover;
+    border: 1rem solid #54daf1;
+    border-radius: 50vh;
+    box-shadow: inset 0px 0px 20px 5px #54daf1;
+}
+
+.reloj::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #327885;
+    border-radius: 50vh;
+    z-index: 10000;
+}
+
+.hora {
+    width: 150px;
+    height: 150px;
+}
+
+.hora::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 70px;
+    background: beige;
+    border-radius: 50%;
+    z-index: 10;
+    border-radius: 50vh;
+}
+
+.minuto {
+    width: 190px;
+    height: 190px;
+}
+
+.minuto::before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 100px;
+    background: brown;
+    border-radius: 50%;
+    z-index: 11;
+    border-radius: 50vh;
+}
+
+.segundo {
+    width: 250px;
+    height: 250px;
+}
+
+.segundo::before {
+    content: '';
+    position: absolute;
+    width: 1.8px;
+    height: 150px;
+    background: chocolate;
+    border-radius: 50%;
+    z-index: 12;
+    border-radius: 50vh;
+}
+
+.hora, .minuto, .segundo {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    border-radius: 50vh;
+}

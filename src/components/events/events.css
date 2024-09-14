@@ -1,0 +1,87 @@
+.eventos {
+    display: grid;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+.titulo {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.formulario {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    padding-bottom: 1rem;
+}   
+
+.inputFormulario{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    padding: 20px;
+    background: aliceblue;
+    border-radius: 15px;
+} .inputFormulario input {
+    border: 2px solid rgb(103, 220, 255);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#agregar {
+    background-color: rgb(103, 220, 255);
+    font-size: 15px;
+}
+
+.ListaEventos2 {
+    display: grid;
+    width: 70%;
+    background-color: aliceblue;
+    border-radius: 15px;
+
+}
+
+.listas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.evento{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border: 3px solid rgb(103, 220, 255);
+    border-radius: 15px;
+    margin: 15px;
+}
+
+.diasFaltantes {
+    display: grid;
+    color: rgb(0, 159, 207);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.nombreEvento {
+    max-width: 300px;
+    min-width: 300px;
+    word-wrap: break-word;
+}
+
+.eliminar{
+    background-color: rgb(103, 220, 255);
+    border-radius: 8px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+} .eliminar:hover {
+    background-color: red;
+}

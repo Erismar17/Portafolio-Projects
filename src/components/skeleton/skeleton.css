@@ -1,0 +1,32 @@
+.esqueletoOff {
+    width: 550px;
+    height: 600px;
+    background-color: #ff5e00;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    background-image: url('../../assets/img/skeletonImg.png');
+}
+
+.esqueletoOff.on {
+    background-image: url('../../assets/img/skeleton.gif');
+}
+
+.esqueletoOnOff {
+    width: 100px;
+    height: 50px;
+    background-color: #7e4300c7;
+    border-radius: 1vh;
+    border: .2rem solid #742a00d2;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.esqueletoOnOff:hover {
+    background-color: #f0894e;
+}
