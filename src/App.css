@@ -1,16 +1,35 @@
 * {
-  background-color: #f1f1f1;
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  top: 0;
-  bottom: 0;
 }
 
 .container {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: none;
+  min-height: 100vh;
+} 
+
+.container-toggleWhite {
+  background-color: #f1f1f1;
+  box-shadow: inset 0 2x 60px rgba(0, 0, 0, 0.1),
+    inset 0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 -4px 4px rgba(0, 0, 0, 0.5);
+
+    .circle {
+        left: 160px;
+        box-shadow: inset 0 8x 20px rgba(0, 0, 0, 0.1),
+            inset 4px 4px rgba(255, 255, 255, 1),
+            inset -4px 4px rgba(255, 255, 255, 1);
+        background: linear-gradient(to bottom, #ffffff, rgb(202, 202, 202));
+    }
+} .container-toggleBlack {
+  color: white;
+  background-color: #1b1b1b;
+  box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.1),
+      inset 0 8px 8px rgba(0, 0, 0, 0.1),
+      inset 0 -4px 4px rgba(0, 0, 0, 0.1);
 }
 
 .title {
@@ -44,4 +63,12 @@ ul {
 
 .button-list.active {
   background-image: linear-gradient(to right, #c5b3eb, #a7d8e9);
+}
+
+.Skeleton {
+  background-color: #e2b572;
+}
+
+.Clock {
+  background: #ebe2ff;
 }

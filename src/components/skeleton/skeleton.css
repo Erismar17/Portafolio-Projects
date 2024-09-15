@@ -1,15 +1,22 @@
-.dance {
-    background-color: #ff5e00;
-    cursor: pointer;
-    padding: 1rem;
-    border-radius: 10px;
-    border: 2px solid #b84300;
-    width: 550px;
-    font-size: x-large;
+.container-skeleton {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.dance.hover {
-    background-color: #f0894e;
+.dance {
+    display: flex;
+    border-radius: 35px;
+    border: 2px solid #9e9ec9;
+    padding: 1rem 5rem;
+    color: black;
+    transition: background-image 0.3s ease;
+    cursor: pointer;
+}
+
+.dance:hover {
+    background-image: linear-gradient(to right, #dbcef2, #daebf3);
 }
 
 .skeletonOff {
@@ -18,10 +25,7 @@
     display: flex;
     margin: 20px 0;
     align-items: end;
-    border-radius: 10px;
     justify-content: center;
-    border: 2px solid #b84300;
-    background-color: #ff5e00;
     background-image: url('../../assets/img/skeletonImg.png');
 }
 

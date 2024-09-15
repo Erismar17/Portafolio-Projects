@@ -4,19 +4,17 @@ import audio from '../../assets/sounds/audio.mp3';
 import buttonDance from '../../assets/sounds/buttonDance.mp3';
 
 const Skeleton = () => {
-  const [skeleton, setSkeleton] = useState('off'); // Controla si el muñeco está bailando
-  const audioRef = useRef(new Audio(audio)); // Mantén una referencia a la instancia de audio
+  const [skeleton, setSkeleton] = useState('off');
+  const audioRef = useRef(new Audio(audio));
 
   useEffect(() => {
-    // Escuchar el evento 'ended' cuando el audio finaliza
-    const handleAudioEnded = () => {
-      setSkeleton('off'); // Detén la animación cuando termine la canción
+      const handleAudioEnded = () => {
+      setSkeleton('off');
     };
 
     const currentAudio = audioRef.current;
-    currentAudio.addEventListener('ended', handleAudioEnded); // Asigna el evento
+    currentAudio.addEventListener('ended', handleAudioEnded);
 
-    // Cleanup del evento al desmontar el componente
     return () => {
       currentAudio.removeEventListener('ended', handleAudioEnded);
     };
@@ -36,7 +34,7 @@ const Skeleton = () => {
   };
 
   return (
-    <div>
+    <div className='container-skeleton'>
       <div className={`skeletonOff ${skeleton}`} id='static'></div>
       <button onClick={handleClick} className='dance'>Dance</button>
     </div>

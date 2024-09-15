@@ -21,11 +21,11 @@ const Clock = () => {
     let hours = time.getHours();
     let minutes = time.getMinutes();
     let seconds = time.getSeconds();
-    let period = "AM";
+    let period = 'AM';
 
     if (hours > 12) {
       hours -= 12;
-      period = "PM";
+      period = 'PM';
     }
 
     hours = hours < 10 ? `0${hours}` : hours;
@@ -36,11 +36,11 @@ const Clock = () => {
   };
 
   return (
-    <div className="reloj">
-      <div className="reloj-digital">{formatTime()}</div>
-      <div className="hour" style={{ transform: `rotate(${hr + min / 12}deg)` }}></div>
-      <div className="minute" style={{ transform: `rotate(${min}deg)` }}></div>
-      <div className="second" style={{ transform: `rotate(${sec}deg)` }}></div>
+      <div className='clock'>
+        <div className='digital-clock'>{formatTime()}</div>
+        <div className='hour' style={{ transform: `rotate(${hr + min / 12}deg)` }}></div>
+        <div className='minute' style={{ transform: `rotate(${min}deg)` }}></div>
+        <div className='second' style={{ transform: `rotate(${sec}deg)` }}></div>
     </div>
   );
 };

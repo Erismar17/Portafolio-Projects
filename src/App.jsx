@@ -7,6 +7,7 @@ import Skeleton from './components/skeleton/Skeleton';
 
 const App = () => {
   const [currentProject, setCurrentProject] = useState('home');
+  const [isWhite, setIsWhite] = useState(true);
 
   const renderProject = () => {
     switch (currentProject) {
@@ -15,7 +16,7 @@ const App = () => {
       case 'Clock':
         return <Clock />;
       case 'Toggle':
-        return <Toggle />;
+        return <Toggle onSetIsWhite={setIsWhite} />;
       case 'Events':
         return <Events />;
       default:
@@ -24,7 +25,7 @@ const App = () => {
   };
 
   return (
-    <div className='container'>
+    <div className={`${isWhite ? 'container-toggleWhite' : 'container-toggleBlack'} ${currentProject} container `}>
       <h2 className='title'>Here you can click on any button you want and see my work</h2>
       <nav>
         <ul className='list'>

@@ -1,95 +1,108 @@
 import React, { useState, useEffect } from 'react';
-import './events.css'; // Asegúrate de que el archivo de estilos esté en la ubicación correcta
+import './events.css';
 
 const Events = () => {
-  const [eventos, setEventos] = useState([]);
-  const [nombreEvento, setNombreEvento] = useState('');
-  const [fechaEvento, setFechaEvento] = useState('');
+  const [events, setEvents] = useState([]);
+  const [eventName, setEventName] = useState('');
+  const [dateEvent, setDateEvent] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    // Cargar eventos desde localStorage cuando el componente se monta
-    const json = localStorage.getItem('lista');
-    try {
-      const storedEventos = JSON.parse(json);
-      setEventos(storedEventos || []);
-    } catch (error) {
-      setEventos([]);
+    const storedEvents = localStorage.getItem('list');
+    if (storedEvents) {
+      try {
+        const parsedEvents = JSON.parse(storedEvents);
+        if (Array.isArray(parsedEvents)) {
+          setEvents(parsedEvents);
+        }
+      } catch (error) {
+        console.error('Error parsing localStorage data:', error);
+        setEvents([]);
+      }
     }
   }, []);
 
   useEffect(() => {
-    // Guardar eventos en localStorage cuando cambian
-    localStorage.setItem('lista', JSON.stringify(eventos));
-  }, [eventos]);
+    if (events.length > 0) {
+      localStorage.setItem('list', JSON.stringify(events));
+    }
+  }, [events]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    agregarEvento();
+    addEvent();
   };
 
-  const agregarEvento = () => {
-    if (!nombreEvento || !fechaEvento || diferenciaFecha(fechaEvento) < 0) {
+  const addEvent = () => {
+    if (!eventName.trim() || !dateEvent || dateGap(dateEvent) < 0) {
+      setError('Please provide a valid event name and a future date.');
       return;
     }
-    const nuevoEvento = {
-      id: (Math.random() * 100).toString(36).slice(3),
-      nombre: nombreEvento,
-      fecha: fechaEvento,
+    const newEvent = {
+      id: Date.now().toString(),
+      name: eventName,
+      date: dateEvent,
     };
-    setEventos([nuevoEvento, ...eventos]);
-    setNombreEvento('');
-    setFechaEvento('');
+    setEvents([newEvent, ...events]);
+    setEventName('');
+    setDateEvent('');
+    setError('');
   };
 
-  const diferenciaFecha = (destino) => {
-    const fechaDestino = new Date(destino);
-    const fechaActual = new Date();
-    const diferencia = fechaDestino.getTime() - fechaActual.getTime();
-    const dias = Math.ceil(diferencia / (1000 * 3600 * 24));
-    return dias;
+  const dateGap = (destination) => {
+    const destinationDate = new Date(destination);
+    const realDate = new Date();
+    const difference = destinationDate.getTime() - realDate.getTime();
+    const days = Math.ceil(difference / (1000 * 3600 * 24));
+    return days;
   };
 
-  const eliminarEvento = (id) => {
-    setEventos(eventos.filter(evento => evento.id !== id));
+  const deleteEvent = (id) => {
+    const updatedEvents = events.filter((event) => event.id !== id);
+    setEvents(updatedEvents);
+    localStorage.setItem('list', JSON.stringify(updatedEvents));
   };
 
   return (
-    <div className="eventos">
-      <div className="formulario">
-        <p className="titulo">Próximos Eventos</p>
-        <form className="inputFormulario" onSubmit={handleSubmit}>
+    <div className='events'>
+      <div className='form'>
+        <p className='title-events'>Future Events</p>
+        <form className='inputForm' onSubmit={handleSubmit}>
           <input
-            type="text"
-            id="nombreEvento"
-            placeholder="Nombre del evento"
-            value={nombreEvento}
-            onChange={(e) => setNombreEvento(e.target.value)}
+            type='text'
+            placeholder='Name of the event'
+            value={eventName}
+            onChange={(e) => setEventName(e.target.value)}
           />
           <input
-            type="date"
-            id="fechaEvento"
-            value={fechaEvento}
-            onChange={(e) => setFechaEvento(e.target.value)}
+            type='date'
+            value={dateEvent}
+            onChange={(e) => setDateEvent(e.target.value)}
           />
-          <input type="submit" id="agregar" value="Agregar Evento" />
+          <input type='submit' id='add' value='Add Event' />
         </form>
+        {error && <p className='error'>{error}</p>}
       </div>
-      <div className="listas">
-        <div className="ListaEventos2" id="ListaEventos">
-          {eventos.map((evento) => (
-            <div className="evento" key={evento.id}>
-              <div className="dias">
-                <span className="diasFaltantes">{diferenciaFecha(evento.fecha)}</span>
-                <span className="texto">dias para</span>
+      <div className='ListEvents'>
+        {events.length > 0 ? (
+          events.map((event) => (
+            <div className='event' key={event.id}>
+              <div className='days'>
+                <span className='dateGap'>{dateGap(event.date)}</span>
+                <span>days for</span>
               </div>
-              <div className="nombreEvento">{evento.nombre}</div>
-              <div className="fechaEvento">{evento.fecha}</div>
-              <div className="acciones">
-                <button onClick={() => eliminarEvento(evento.id)} className="eliminar">Eliminar</button>
+              <div className='nameEvent'>{event.name}</div>
+              <div className='dateEvent'>{new Date(event.date).toLocaleDateString()}</div>
+              <div className='accions'>
+                <button onClick={() => deleteEvent(event.id)} className='delete'>
+                  <span className='material-symbols-rounded'>delete</span>
+                </button>
               </div>
             </div>
-          ))}
-        </div>
+          ))
+        ) : (
+          <p className='without-events'>No upcoming events</p>
+        )}
       </div>
     </div>
   );

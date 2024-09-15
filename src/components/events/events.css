@@ -1,87 +1,106 @@
-.eventos {
-    display: grid;
-    width: 100%;
-    align-items: center;
-    text-align: center;
-}
-.titulo {
-    font-size: 25px;
-    text-align: center;
-    margin-top: 80px;
+.events {
+    display: flex;
+    flex-direction: column;
 }
 
-.formulario {
-    display: grid;
+.form {
+    display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
-    width: 100%;
-    gap: 20px;
-    padding-bottom: 1rem;
-}   
+}
 
-.inputFormulario{
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 10px;
-    padding: 20px;
-    background: aliceblue;
-    border-radius: 15px;
-} .inputFormulario input {
-    border: 2px solid rgb(103, 220, 255);
+.title-events {
+    margin: 5px;
+    font-size: x-large;
+}
+
+.inputForm {
+    gap: 1rem;
+    display: flex;
+    padding: 2rem 4rem;
     border-radius: 10px;
-    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #dbcef2;
 }
 
-#agregar {
-    background-color: rgb(103, 220, 255);
-    font-size: 15px;
+.inputForm input {
+    padding: 1rem;
+    border-radius: 10px;
+    border: 3px solid #b5edff;
 }
 
-.ListaEventos2 {
-    display: grid;
-    width: 70%;
-    background-color: aliceblue;
-    border-radius: 15px;
-
+#add {
+    background-color: #b5edff;
 }
 
-.listas {
+.ListEvents {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.without-events {
+    margin: 2rem;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100%;
 }
 
-.evento{
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-    border: 3px solid rgb(103, 220, 255);
-    border-radius: 15px;
+.event{
     margin: 15px;
+    display: flex;
+    padding: 15px;
+    border-radius: 15px;
+    border: 3px solid #b5edff;
+    justify-content: space-between;
 }
 
-.diasFaltantes {
-    display: grid;
-    color: rgb(0, 159, 207);
+.days {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dateGap {
     font-size: 25px;
+    color: #62bcda;
     font-weight: bold;
 }
 
-.nombreEvento {
-    max-width: 300px;
-    min-width: 300px;
+.nameEvent {
+    display: flex;
+    margin: 0 2rem;
+    margin: 0 2rem;
+    text-align: center;
+    align-items: center;
     word-wrap: break-word;
+    justify-content: center;
 }
 
-.eliminar{
-    background-color: rgb(103, 220, 255);
-    border-radius: 8px;
-    padding: 10px;
-    border: none;
+.dateEvent {
+    display: flex;
+    margin: 0 1rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.accions{
+    display: flex;
     cursor: pointer;
-} .eliminar:hover {
-    background-color: red;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete{
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #62bcda;
+}
+
+.delete:hover {
+    background-color: #ff5b5b;
 }
